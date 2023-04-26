@@ -8,10 +8,8 @@ class="form-control"
 type="text"
 class="form-control"
 [(ngModel)]="serverName">
-
-
-
 <!-- <p>{{ serverName }}</p> -->
+
 
 <button class="btn btn-primary" 
 [disabled]="!allowNewServer"
@@ -20,8 +18,8 @@ class="form-control"
 
 
 <!-- <p [innerText]="allowNewServer"></p> -->
-<p>{{ serverCreationStatus }}</p>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<p *ngIf="serverCreated">Server was created, server name is {{serverName}}</p>
 <hr>
 
-<app-server></app-server>
-<app-server></app-server>
+<app-server *ngFor="let server of servers"></app-server>
