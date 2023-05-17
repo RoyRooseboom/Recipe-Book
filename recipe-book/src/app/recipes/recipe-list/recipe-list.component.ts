@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { Recipe } from '../recipe.model';
 
@@ -9,18 +9,27 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeListComponent 
 {
+  @Output() recipeWasSelected = new EventEmitter<Recipe>();
+
+
   recipes: Recipe[] = [
     new Recipe("Test Recipe", 
+    "A great description", 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkLpemQckgcADv6pxOmOywXWp_josNgx9Tvg&usqp=CAU"),
+    new Recipe("Burger", 
     "Description Test", 
-    "https://th.bing.com/th/id/OIP.HqmWxoq-Zpw6y4feINmRbQHaLH?pid=ImgDet&rs=1"),
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkLpemQckgcADv6pxOmOywXWp_josNgx9Tvg&usqp=CAU"),
+    new Recipe("Something", 
+    "Hello", 
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkLpemQckgcADv6pxOmOywXWp_josNgx9Tvg&usqp=CAU"),
     new Recipe("Test Recipe", 
     "Description Test", 
-    "https://th.bing.com/th/id/OIP.HqmWxoq-Zpw6y4feINmRbQHaLH?pid=ImgDet&rs=1"),
-    new Recipe("Test Recipe", 
-    "Description Test", 
-    "https://th.bing.com/th/id/OIP.HqmWxoq-Zpw6y4feINmRbQHaLH?pid=ImgDet&rs=1"),
-    new Recipe("Test Recipe", 
-    "Description Test", 
-    "https://th.bing.com/th/id/OIP.HqmWxoq-Zpw6y4feINmRbQHaLH?pid=ImgDet&rs=1")
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkLpemQckgcADv6pxOmOywXWp_josNgx9Tvg&usqp=CAU"),
   ];
+
+
+  onRecipeSelected(recipe: Recipe)
+  {
+    this.recipeWasSelected.emit(recipe);
+  }
 }
